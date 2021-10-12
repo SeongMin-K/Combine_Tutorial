@@ -13,6 +13,7 @@
 		3ECDCAC427157C9F0015D850 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECDCAC227157C9F0015D850 /* Main.storyboard */; };
 		3ECDCAC627157CA20015D850 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ECDCAC527157CA20015D850 /* Assets.xcassets */; };
 		3ECDCAC927157CA20015D850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECDCAC727157CA20015D850 /* LaunchScreen.storyboard */; };
+		3ECDCAD127157D690015D850 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECDCAD027157D690015D850 /* MyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3ECDCAC527157CA20015D850 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ECDCAC827157CA20015D850 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ECDCACA27157CA20015D850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ECDCAD027157D690015D850 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				3ECDCABC27157C9F0015D850 /* AppDelegate.swift */,
 				3ECDCABE27157C9F0015D850 /* SceneDelegate.swift */,
 				3ECDCAC027157C9F0015D850 /* ViewController.swift */,
+				3ECDCAD027157D690015D850 /* MyViewModel.swift */,
 				3ECDCAC227157C9F0015D850 /* Main.storyboard */,
 				3ECDCAC527157CA20015D850 /* Assets.xcassets */,
 				3ECDCAC727157CA20015D850 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				3ECDCAC127157C9F0015D850 /* ViewController.swift in Sources */,
 				3ECDCABD27157C9F0015D850 /* AppDelegate.swift in Sources */,
+				3ECDCAD127157D690015D850 /* MyViewModel.swift in Sources */,
 				3ECDCABF27157C9F0015D850 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
