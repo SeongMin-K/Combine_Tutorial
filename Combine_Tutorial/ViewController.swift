@@ -9,7 +9,16 @@ import UIKit
 import Combine
 
 class ViewController: UIViewController {
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.searchTextField.accessibilityIdentifier = "mySearchBarTextField"
+        return searchController
+    }()
 
+    @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var myBtn: UIButton!
@@ -22,6 +31,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         print(#fileID, #function, "called")
+        
+        self.navigationItem.searchController = searchController
+        searchController.isActive = true
+        
+        searchController.searchBar.searchTextField
+            .myDebounceSearchPublisher
+            .sink { [weak self] (receivedValue) in
+                guard let self = self else { return }
+                
+                print("receivedValue: \(receivedValue)")
+                self.myLabel.text = receivedValue
+            }.store(in: &mySubscriptions)
         
         viewModel = MyViewModel()
         
@@ -52,8 +73,22 @@ class ViewController: UIViewController {
             .assign(to: \.isValid, on: myBtn)
             .store(in: &mySubscriptions)
     }
+}
 
-
+extension UISearchTextField {
+    var myDebounceSearchPublisher: AnyPublisher<String, Never> {
+        NotificationCenter.default.publisher(for: UISearchTextField.textDidChangeNotification, object: self)
+            // 노티피케이션 센터에서 UISearchTextField 가져옴
+            .compactMap{ $0.object as? UISearchTextField }
+            // UISearchTextField에서 String 가져옴
+            .map{ $0.text ?? "" }
+            // 디바운스
+            .debounce(for: .milliseconds(1000), scheduler: RunLoop.main)
+            // 글자가 있을 때만 이벤트 전달
+            .filter{ $0.count > 0 }
+            .print()
+            .eraseToAnyPublisher()
+    }
 }
 
 extension UITextField {
